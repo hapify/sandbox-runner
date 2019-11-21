@@ -20,12 +20,3 @@ docker run -it \
        --name hpf-sandbox-runner \
        hapify/sandbox-runner
 ```
-
-
-```
-docker run -it --rm \
-       -e HPF_KEY=Uma5zbAAqXAA6aKjW73j4pVpnuIhilyF2B6Q2ZAtCLJsIK3q \
-       -e HPF_PROJECT=5d0a3fa8bbfb050016e850da \
-       --name hpf-sandbox-runner \
-      runner
-```
