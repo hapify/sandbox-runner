@@ -21,6 +21,9 @@ RUN apt-get update && \
     mongodb-org-mongos=3.6.15 \
     mongodb-org-tools=3.6.15
 
+COPY mongodb/initd /etc/init.d/mongod
+RUN chmod +x /etc/init.d/mongod
+
 # Install Hapify CLI
 RUN npm install -g hapify-cli@0.5.6
 
@@ -35,13 +38,10 @@ RUN cd /app && git clone --branch v2.0.0 https://github.com/Tractr/boilerplate-n
 #RUN cd /app/boilerplate-ngx-components && npm install
 #RUN cd /app/boilerplate-ngx-dashboard && npm install
 
-COPY mongodb/initd /etc/init.d/mongod
-RUN chmod +x /etc/init.d/mongod
-
 VOLUME /app
 
-COPY entrypoint.sh /entrypoint.sh
-
 EXPOSE 3000
+
+COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
