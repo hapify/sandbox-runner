@@ -30,9 +30,25 @@ hpf --debug -d /app generate
 
 # Install API
 cd /app/boilerplate-hapijs
-npm install
+if [[ ! -d "node_modules" ]]; then
+    npm install
+fi
 npm run cmd setup
 npm run cmd insert-admin
+
+# Build dashboard
+cd /app/boilerplate-ngx-dashboard
+if [[ ! -d "node_modules" ]]; then
+    npm install
+fi
+npm run build
+
+# Build components
+cd /app/boilerplate-ngx-components
+if [[ ! -d "node_modules" ]]; then
+    npm install
+fi
+npm run build
 
 # Start API
 NODE_ENV=development npm start
