@@ -8,7 +8,8 @@ RUN apt-get update && \
         curl \
         software-properties-common \
         dirmngr \
-        redis-server
+        redis-server \
+        nginx
 
 # Install MongoDB
 RUN wget -qO - https://www.mongodb.org/static/pgp/server-3.6.asc | apt-key add - && \
@@ -38,10 +39,11 @@ RUN cd /app && git clone --branch v2.0.0 https://github.com/Tractr/boilerplate-n
 #RUN cd /app/boilerplate-ngx-components && npm install
 #RUN cd /app/boilerplate-ngx-dashboard && npm install
 
+# Configure Nginx
+COPY nginx/default.conf /etc/nginx/sites-available/default
+
+# Configure image
 VOLUME /app
-
-EXPOSE 3000
-
+EXPOSE 3000 8000 8001
 COPY entrypoint.sh /entrypoint.sh
-
 ENTRYPOINT ["/entrypoint.sh"]

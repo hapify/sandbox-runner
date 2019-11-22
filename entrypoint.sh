@@ -15,6 +15,7 @@ fi
 # Start services
 service redis-server start
 service mongod start
+service nginx start || (cat /var/log/nginx/error.log && exit 1)
 
 # Add special hosts
 echo "127.0.0.1 mongodb redis" >> /etc/hosts
@@ -51,4 +52,5 @@ fi
 npm run build
 
 # Start API
+cd /app/boilerplate-hapijs
 NODE_ENV=development npm start
