@@ -20,6 +20,7 @@ docker run -it -rm \
        -e HPF_KEY=XXXXXXXXXXXXXXXXXXXXX \
        -e HPF_PROJECT=XXXXXXXXXXXXXXXXXXXXX \
        -e HPF_API_URL=https://api.hapify.io/v1 \
+       -e POPULATE_DATABASE=1 \
        --name hpf-sandbox-runner \
        hapify/sandbox-runner
 ```
