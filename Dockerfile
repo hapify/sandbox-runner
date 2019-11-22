@@ -35,9 +35,9 @@ RUN cd /app && git clone --branch v2.0.0 https://github.com/Tractr/boilerplate-n
 RUN cd /app && git clone --branch v2.0.0 https://github.com/Tractr/boilerplate-ngx-dashboard.git
 
 # Prepare boilerplates
-#RUN cd /app/boilerplate-hapijs && npm install
-#RUN cd /app/boilerplate-ngx-components && npm install
-#RUN cd /app/boilerplate-ngx-dashboard && npm install
+RUN cd /app/boilerplate-hapijs && npm install
+RUN cd /app/boilerplate-ngx-components && npm install
+RUN cd /app/boilerplate-ngx-dashboard && npm install
 
 # Configure Nginx
 COPY nginx/default.conf /etc/nginx/sites-available/default
