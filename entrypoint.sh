@@ -24,6 +24,12 @@ service nginx start || (cat /var/log/nginx/error.log && exit 1)
 echo "127.0.0.1 mongodb redis" >> /etc/hosts
 
 # ===============================================
+# Dirty work-around to use admin routes in components
+SEARCH="return '<<M a-a>>';";
+REPLACE="return 'admin/<<M a-a>>';";
+sed -i "s@${SEARCH}@${REPLACE}@g" /app/boilerplate-ngx-components/hapify/src/app/models/model/model.service.ts.hpf
+
+# ===============================================
 # Generate project
 API_URL="${HPF_API_URL:-https://api.hapify.io/v1}"
 hpf config --apiKey ${HPF_KEY}
