@@ -13,7 +13,7 @@ docker build . -t hpf-sandbox-runner
 ### Run this image
 
 ```bash
-docker run -it -rm \
+docker run -it --rm \
        -p 3000:3000 \
        -p 8000:8000 \
        -p 8001:8001 \
