@@ -33,6 +33,9 @@ echo "127.0.0.1 mongodb redis" >> /etc/hosts
 SEARCH="return '<<M a-a>>';";
 REPLACE="return 'admin/<<M a-a>>';";
 sed -i "s@${SEARCH}@${REPLACE}@g" /app/boilerplate-ngx-components/hapify/src/app/models/model/model.service.ts.hpf
+SEARCH=" = true;";
+REPLACE=" = false;";
+sed -i "s@${SEARCH}@${REPLACE}@g" /app/boilerplate-ngx-components/hapify/src/app/models/model/model.service.ts.hpf
 
 # ===============================================
 # Generate project
