@@ -31,8 +31,8 @@ RUN npm install -g hapify-cli@0.5.6
 # Clone the boilerplates
 RUN mkdir /app
 RUN cd /app && git clone --branch v2.0.1 https://github.com/Tractr/boilerplate-hapijs.git
-RUN cd /app && git clone --branch v2.0.0 https://github.com/Tractr/boilerplate-ngx-components.git
-RUN cd /app && git clone --branch v2.0.0 https://github.com/Tractr/boilerplate-ngx-dashboard.git
+RUN cd /app && git clone --branch v2.0.1 https://github.com/Tractr/boilerplate-ngx-components.git
+RUN cd /app && git clone --branch v2.0.1 https://github.com/Tractr/boilerplate-ngx-dashboard.git
 
 # Prepare boilerplates
 RUN cd /app/boilerplate-hapijs && npm install

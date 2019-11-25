@@ -13,6 +13,11 @@ if [[ -z "$HPF_PROJECT" ]]; then
     exit 1
 fi
 
+if [[ -z "$API_URL" ]]; then
+    echo -e "You must specify an Api URL"
+    exit 1
+fi
+
 # ===============================================
 # Start services
 service redis-server start
@@ -31,7 +36,6 @@ sed -i "s@${SEARCH}@${REPLACE}@g" /app/boilerplate-ngx-components/hapify/src/app
 
 # ===============================================
 # Generate project
-API_URL="${HPF_API_URL:-https://api.hapify.io/v1}"
 hpf config --apiKey ${HPF_KEY}
 if [[ ! -z "$HPF_API_URL" ]]; then
     hpf config --apiUrl ${HPF_API_URL}
@@ -53,12 +57,18 @@ if [[ "$POPULATE_DATABASE" -eq "1" ]]; then
 fi
 
 # ===============================================
+# Change API URL
+SEARCH="https://api.example.com";
+sed -i "s@${SEARCH}@${API_URL}@g" /app/boilerplate-ngx-dashboard/src/environments/environment.production.ts
+sed -i "s@${SEARCH}@${API_URL}@g" /app/boilerplate-ngx-components/src/environments/environment.production.ts
+
+# ===============================================
 # Build dashboard
 cd /app/boilerplate-ngx-dashboard
 if [[ ! -d "node_modules" ]]; then
     npm install
 fi
-npm run build
+npm run build:production
 
 # ===============================================
 # Build components
