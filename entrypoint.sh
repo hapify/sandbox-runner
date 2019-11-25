@@ -68,7 +68,7 @@ cd /app/boilerplate-ngx-dashboard
 if [[ ! -d "node_modules" ]]; then
     npm install
 fi
-npm run build:production
+npm run build:production-quick
 
 # ===============================================
 # Build components
@@ -76,7 +76,7 @@ cd /app/boilerplate-ngx-components
 if [[ ! -d "node_modules" ]]; then
     npm install
 fi
-npm run build
+npm run build:production-quick
 
 # ===============================================
 # Start API
